@@ -9,10 +9,10 @@
 
 // TODO: add a fake card with fake position
 
-import GeneralLights from './sceneSubject/GeneralLights';
-import Card from './sceneSubject/Card';
-import Plane from './sceneSubject/Plane';
-import BuisnessCard from './sceneSubject/BuisnessCard';
+import GeneralLights from './sceneSubject/GeneralLights.js';
+import Card from './sceneSubject/Card.js';
+import Plane from './sceneSubject/Plane.js';
+import BuisnessCard from './sceneSubject/BuisnessCard.js';
 
 
 
