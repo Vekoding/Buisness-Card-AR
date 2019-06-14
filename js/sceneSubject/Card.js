@@ -6,11 +6,11 @@
 *     a SceneSubject can contain severals SceneSubjects
 **/
 
-import Logo from './Logo';
-import Profil from './Profil';
-import Video from './Video';
-import Map from './Map';
-import Button from './Button';
+import Logo from './Logo.js';
+import Profil from './Profil.js';
+import Video from './Video.js';
+import Map from './Map.js';
+import Button from './Button.js';
 
 export default function Card(id, scene, buisnessCard) {
 
