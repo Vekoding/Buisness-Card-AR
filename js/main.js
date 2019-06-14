@@ -1,4 +1,4 @@
-import SceneManager from './SceneManager';
+import SceneManager from './SceneManager.js';
 const colors = {
   black:0x0d040f,
   grey:0xdee7e8,
