@@ -1,0 +1,58 @@
+<!doctype html>
+<html id="html">
+  <head>
+    <title>Bouton avec three js</title>
+    <meta charset="utf-8">
+    <link  href="css/main.css" rel="stylesheet"/>
+  </head>
+<body>
+
+  <canvas id="canvas"></canvas>
+  <canvas id="canvas2D"></canvas>
+
+  <div class="overlay" id="posButton">
+    <input type="checkbox" id="markerFound" name="marker"
+        checked>
+    <label for="markerFound">Marker Found</label>
+
+    <h2> Card Position </h2>
+    <label for="posX"> x :
+      <input type="number" id="posX" name=" x position" value="0"/>
+    </label>
+    <label for="posY"> <br/> y :
+      <input type="number" id="posY" name=" y position" value="0"/>
+    </label>
+    <label for="posZ"> <br/> z :
+      <input type="number" id="posZ" name=" z position" value="0"/>
+    </label>
+
+    <h2> Card Size </h2>
+    <label for="size">
+      <input type="range" id="size" min="5" max="15" value="5"/>
+    </label>
+
+    <h2> Card Rotation </h2>
+    <label for="angle">
+      <input type="range" id="angle" min="0" max="360"/>
+    </label>
+  </div>
+
+  <video id="video" autoplay loop>
+
+    <source src="video0.mp4"
+            type="video/mp4">
+
+    Sorry, your browser doesn't support embedded videos.
+  </video>
+
+
+  <script src="js/libs/three.min.js"></script>
+  <script src="js/libs/OrbitControls.js"></script>
+  <script src="js/libs/OBJLoader.js"></script>
+  <script src="js/libs/Raycaster.js"></script>
+  <script src="js/libs/ColladaLoader.js"></script>
+
+  <script type="module" src='js/main.js'></script>
+
+</body>
+</html>
