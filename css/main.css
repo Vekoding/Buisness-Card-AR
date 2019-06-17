@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+html {
+  font-family: 'Montserrat', sans-serif;
+}
 canvas {
   position: absolute;
 	width: 100%;
@@ -22,5 +27,12 @@ video {
   left:0;
   z-index:200;
   width: 25%;
-  height:25%;
+}
+
+#canvasMap {
+  display: none;
+  top:0;
+  left:0;
+  z-index:200;
+  width: 25%;
 }

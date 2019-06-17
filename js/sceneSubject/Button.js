@@ -1,9 +1,16 @@
+const colors = {
+  black:0x0d040f,
+  grey:0xdee7e8,
+  white:0xf9f9f9,
+  blue:0x468189
+}
+
 export default function Button(buisnessCard) {
 
   const size = buisnessCard.getSize();
 
   let btn1 = new THREE.Mesh();
-  let btn11 = new THREE.Mesh();
+  let about = new THREE.Mesh();
   let btn2 = new THREE.Mesh();
   let btn3 = new THREE.Mesh();
   let btn4 = new THREE.Mesh();
@@ -27,7 +34,7 @@ export default function Button(buisnessCard) {
         daeScene.children.map( i => objectScene.push(i));
         let j = 0;
         objectScene.map( i => {
-          i.material = new THREE.MeshPhongMaterial({color: 'pink'});
+          i.material = new THREE.MeshLambertMaterial({color: colors.blue});
           j+= 1;
           btn1.add(i);
         })
@@ -36,27 +43,64 @@ export default function Button(buisnessCard) {
         btn1.rotation.y = Math.PI;
         btn1.rotation.z = -Math.PI;
 
-        btn11 = btn1.clone();
-
+      //  btn11 = btn1.clone();
+/*
         btn2 = btn1.clone();
         btn2.position.set(1, 1, 0);
-        button.add(btn2);
+        button.add(btn2); */
 
         btn3 = btn1.clone();
         btn3.position.set(-1, 1, 0);
         button.add(btn3);
 
-        btn4 = btn1.clone();
+  /*      btn4 = btn1.clone();
         btn4.position.set(-0.5, 0.1, 0);
-        button.add(btn4);
+        button.add(btn4);*/
 
         btn5 = btn1.clone();
         btn5.position.set(0.5, 0.1, 0);
         button.add(btn5);
 
-        button.add(btn11);
+      },
+      // called when loading is in progresses
+      function ( xhr ) {
+
+        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+      },
+      // called when loading has errors
+      function ( error ) {
+
+        console.log( 'An error happened' );
+
+      }
+    );
+
+    // About button
+    loader.load(
+      // resource URL
+      './asset/3D/about.dae',
+      // called when resource is loaded
+      function ( object ) {
+
+        if (object.scene == undefined) return;
+        const daeScene = object.scene;
+        let objectScene = [];
+        daeScene.children.map( i => objectScene.push(i));
+        let j = 0;
+        objectScene.map( i => {
+          i.material = new THREE.MeshLambertMaterial({color: colors.blue});
+          j+= 1;
+          about.add(i);
+        })
+        about.scale.set(0.5,0.5,0.5);
+        about.translateY(1);
+        about.rotation.z = -Math.PI;
+        about.rotation.x = -Math.PI;
+
+        button.add(about);
         button.rotation.x = -Math.PI/2;
-        button.scale.set(1.8,1.8,1.8);
+        button.scale.set(2,2,2);
         button.translateY(-1);
 
       },
@@ -73,6 +117,86 @@ export default function Button(buisnessCard) {
 
       }
     );
+
+    // Project button
+    loader.load(
+      // resource URL
+      './asset/3D/project.dae',
+      // called when resource is loaded
+      function ( object ) {
+
+        if (object.scene == undefined) return;
+        const daeScene = object.scene;
+        let objectScene = [];
+        daeScene.children.map( i => objectScene.push(i));
+        let j = 0;
+        objectScene.map( i => {
+          i.material = new THREE.MeshLambertMaterial({color: colors.blue});
+          j+= 1;
+          btn2.add(i);
+        })
+
+        btn2.scale.set(0.5,0.5,0.5);
+        btn2.position.set(1, 1, 0);
+        btn2.rotation.z = -Math.PI;
+        btn2.rotation.x = -Math.PI;
+        button.add(btn2);
+
+      },
+      // called when loading is in progresses
+      function ( xhr ) {
+
+        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+      },
+      // called when loading has errors
+      function ( error ) {
+
+        console.log( 'An error happened' );
+
+      }
+    );
+
+    // Skill button
+    loader.load(
+      // resource URL
+      './asset/3D/skills.dae',
+      // called when resource is loaded
+      function ( object ) {
+
+        if (object.scene == undefined) return;
+        const daeScene = object.scene;
+        let objectScene = [];
+        daeScene.children.map( i => objectScene.push(i));
+        let j = 0;
+        objectScene.map( i => {
+          i.material = new THREE.MeshLambertMaterial({color: colors.blue});
+          j+= 1;
+          btn4.add(i);
+        })
+
+        btn4.scale.set(0.5,0.5,0.5);
+        btn4.position.set(-0.5, 0.1, 0);
+        btn4.rotation.z = -Math.PI;
+        btn4.rotation.x = -Math.PI;
+        console.log(about.rotation);
+        button.add(btn4);
+
+      },
+      // called when loading is in progresses
+      function ( xhr ) {
+
+        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+      },
+      // called when loading has errors
+      function ( error ) {
+
+        console.log( 'An error happened' );
+
+      }
+    );
+
     return button
   }
 
@@ -96,14 +220,13 @@ export default function Button(buisnessCard) {
   }
 
   const buttonManager = () => {
-    //console.log('Button manager : { currentbtn : '+ currentbtn +' frameUntilNextButton : ' + frameUntilNextButton + ' }');
     if (currentbtn == 1 && frameUntilNextButton == 0) {
-      rotateAnimation(btn11, btn5);
+      rotateAnimation(about, btn5);
       return;
     }
     if (currentbtn == 2 && frameUntilNextButton == 0) {
 
-      rotateAnimation(btn2, btn11);
+      rotateAnimation(btn2, about);
       return;
     }
     if (currentbtn == 3 && frameUntilNextButton == 0) {
@@ -124,9 +247,16 @@ export default function Button(buisnessCard) {
     }
   }
 
+  const changeMaterial = (object, material) => {
+    if (object.material === material) return;
+    object.material = material;
+  }
+
   this.update = () => {
+    console.log(about.material);
     button.visible = true;
     buttonManager();
+    console.log(about.material);
   }
 
   this.hide = () => {
@@ -142,7 +272,7 @@ export default function Button(buisnessCard) {
   }
 
   this.setPosition = (x, y, z) => {
-    button.position.set(x + size.w + 0.5, y, z + size.h + 1.5);
+    button.position.set(x + size.w + 1, y, z + size.h + 1.5);
   }
 
   this.rotate = (x, y, z) => {

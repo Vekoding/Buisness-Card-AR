@@ -1,14 +1,19 @@
 export default function GeneralLights(scene) {
 
-	const light = new THREE.PointLight("#ffffff", 1);
-	light.position.set(0,0,0);
-  scene.add(light);
+	const light2 = new THREE.PointLight("#ffffff", 0.8);
+	light2.position.set(2,0,-10);
+  scene.add(light2);
 
 	const lightVideo = new THREE.PointLight("#ffffff", 1);
-	lightVideo.position.set(-5,2,0);
+	lightVideo.position.set(-10,3,0);
   scene.add(lightVideo);
+
+	var sphereSize = 1;
+	var pointLightHelper = new THREE.PointLightHelper( light2, sphereSize );
+	scene.add( pointLightHelper );
 
 	this.update = function(time) {
 		light.intensity = 1;
+
 	}
 }

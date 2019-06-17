@@ -30,7 +30,7 @@ export default function BuisnessCard(scene) {
     const planeHeight = size.h;
     const texture = (new THREE.TextureLoader()).load('./asset/textures/card0.jpg');
     const material =new THREE.MeshBasicMaterial( { map: texture } );
-
+    material.map.minFilter = THREE.LinearFilter;
     const planeGeo = new THREE.PlaneBufferGeometry(planeWidth, planeHeight);
     const mesh = new THREE.Mesh(planeGeo, material);
     mesh.receiveShadow = true;
